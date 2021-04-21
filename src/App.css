@@ -10,3 +10,17 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
 }
+.app-wrapper-header {
+  grid-area: h;
+  background: green;
+}
+
+.app-wrapper-navbar {
+    grid-area: n;
+    background: yellow;
+}
+
+.app-wrapper-content {
+    grid-area: c;
+    background: blue;
+}
