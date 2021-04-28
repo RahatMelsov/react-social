@@ -1,7 +1,11 @@
+.item {
+  padding: .3em;
+}
+
 .item a {
   color: black;
 }
 
-.item.active a{
+.item .activeLink{
 	color: brown;
 }
