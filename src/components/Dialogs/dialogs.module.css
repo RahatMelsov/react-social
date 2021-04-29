@@ -1,8 +1,20 @@
-.header {
-  grid-area: h;
-  background: green;
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
 }
 
-.header img {
-  width: 20px;
+.dialogs .dialogsItem {
+  padding: .3em;
+}
+
+.dialogsItem .active {
+  color: cyan;
+}
+
+.dialogsItem .dialog {
+  padding: .3em;
+}
+
+.messages .message {
+  padding: .3em;
 }
