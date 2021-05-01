@@ -7,8 +7,13 @@ const MyPosts = () => {
     <div className={classes.posts}>
       My posts
       <div className={classes.post}>
-        New Post
-          </div>
+        <div>
+          <textarea name="post" cols="30" rows="3"></textarea>
+        </div>
+        <div>
+          <button>post</button>
+        </div>
+      </div>
 
       <Post message="Hello, how are you?" like="423" />
       <Post message="Good day today" like="324" />

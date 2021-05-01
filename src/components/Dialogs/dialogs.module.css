@@ -7,12 +7,13 @@
   padding: .3em;
 }
 
-.dialogsItem .active {
-  color: cyan;
+.dialogsItem .dialog a{
+  padding: .3em;
+  color: #fff;
 }
 
-.dialogsItem .dialog {
-  padding: .3em;
+.dialogs .dialogsItem .activeLink {
+  color: black;
 }
 
 .messages .message {

@@ -1,0 +1,12 @@
+.bg img {
+    width: 100%;
+    height: 100px;
+  }
+  
+.ava img {
+    width: 100px;
+}
+
+.profileInfo .ava {
+    margin: .3em;
+}
