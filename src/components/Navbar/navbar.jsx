@@ -1,8 +1,12 @@
 import React from 'react';
 import classes from './navbar.module.css';
 import {NavLink} from 'react-router-dom';
+import Friend from './../redux/state';
+import DialogsItem from './../Dialogs/DialogsItem/dialogsItem';
 
-const Navbar = () => {
+let ownFriends = Friend.MessagePage.usersData.map(names=> names.id<4?<DialogsItem name={names.name} id={names.id}/>:<div></div>);
+
+const Navbar = (prop) => {
 	return (<nav className={classes.nav}>
         <div className={classes.item}>
           <NavLink to="/profile" activeClassName={classes.activeLink}>Profile</NavLink>
@@ -18,6 +22,10 @@ const Navbar = () => {
         </div>
         <div className={classes.item}>
           <NavLink to="/settings" activeClassName={classes.activeLink}>Settings</NavLink>
+        </div>
+        <div className={classes.item}>
+          <h3>Friends</h3>
+            {ownFriends}
         </div>
       </nav>)
 }

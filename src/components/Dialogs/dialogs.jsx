@@ -1,47 +1,34 @@
 import React from 'react';
 import classes from './dialogs.module.css';
-import { NavLink } from 'react-router-dom';
+import DialogsItem from './DialogsItem/dialogsItem';
+import Messages from './Messages/messages';
 
-const Messages = (props)=> {
-	return <div className={classes.message}>{props.message}</div>
-}
+const Dialogs = (props) => {
 
-const DialogsItem = (props)=> {
-	let path = "/dialogs/" + props.id;
-	return <div className={classes.dialog}>
-	<NavLink to={path} activeClassName={classes.activeLink}>{props.name}</NavLink>
-</div>
-}
+	let usersElements = props.usersData.map(u => <DialogsItem name={u.name} id={u.id} />);
+	let dialogsElements = props.dialogsData.map(d => < Messages message={d.message} />);
 
-const Dialogs = () => {
-
-	let usersData = [
-		{ id: '1', name: 'Vlad' }, 
-		{ id: '2', name: 'Rahat' },
-		{ id: '3', name: 'Saken' },
-		{ id: '4', name: 'Elaman' },
-		{ id: '5', name: 'Amanzhan' },
-		{ id: '6', name: 'Madi' },
-	];
-
-	let dialogsData = [
-		{ message: 'hi' }, 
-		{ message: 'hi' },
-		{ message: 'What is your name?' },
-		{ message: 'React' },
-		{ message: 'cool' },
-	]
+	let newPostMessage = React.createRef();
+	let createNewMessage = () => {
+		alert(newPostMessage.current.value)
+	}
 
 	return (
 		<div>
 			<div className={classes.dialogs}>
 				<div className={classes.dialogsItem}>
-					<DialogsItem name={usersData[0].name} id={usersData[0].id}/>
-					<DialogsItem name={usersData[1].name} id={usersData[1].id}/>
+					{usersElements}
 				</div>
 				<div className={classes.messages}>
-					<Messages message={dialogsData[0].message}/>
-					<Messages message={dialogsData[1].message}/>
+					{dialogsElements}
+					<div className={classes.post}>
+					<div>
+						<textarea name="post" cols="30" rows="3" ref={newPostMessage}></textarea>
+					</div>
+					<div>
+						<button onClick={createNewMessage}>post</button>
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>
