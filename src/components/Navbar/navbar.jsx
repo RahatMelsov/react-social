@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './navbar.module.css';
 import {NavLink} from 'react-router-dom';
-import Friend from './../redux/state';
+import Store from './../redux/state';
 import DialogsItem from './../Dialogs/DialogsItem/dialogsItem';
 
-let ownFriends = Friend.MessagePage.usersData.map(names=> names.id<4?<DialogsItem name={names.name} id={names.id}/>:<div></div>);
+let State = Store.getState;
+let ownFriends = State.MessagePage.usersData.map(names=> names.id<4?<DialogsItem name={names.name} id={names.id}/>:<div></div>);
 
 const Navbar = (prop) => {
 	return (<nav className={classes.nav}>

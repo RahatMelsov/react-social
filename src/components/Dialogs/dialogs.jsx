@@ -5,16 +5,16 @@ import Messages from './Messages/messages';
 
 const Dialogs = (props) => {
 
-	let usersElements = props.usersData.map(u => <DialogsItem name={u.name} id={u.id} />);
-	let dialogsElements = props.dialogsData.map(d => < Messages message={d.message} />);
+	let usersElements = props.State.MessagePage.usersData.map(u => <DialogsItem name={u.name} id={u.id} />);
+	let dialogsElements = props.State.MessagePage.dialogsData.map(d => < Messages message={d.message} />);
 
 	let newDialogsMessage = React.createRef();
 	let createNewMessage = () => {
-		props.addMessage();
+		props.dispatch({type: 'ADD-DIALOGS-MESSAGE'});
 	}
 
 	let updateNewMessage = ()=> {
-		props.updateDialogsMessage(newDialogsMessage.current.value)
+		props.dispatch({type: 'UPDATE-DIALOGS-MESSAGE', newText: newDialogsMessage.current.value})
 	}
 
 	return (
@@ -27,7 +27,7 @@ const Dialogs = (props) => {
 					{dialogsElements}
 					<div className={classes.post}>
 					<div>
-						<textarea name="post" cols="30" rows="3" onChange={updateNewMessage} ref={newDialogsMessage} value={props.newMessageData}></textarea>
+						<textarea name="post" cols="30" rows="3" onChange={updateNewMessage} ref={newDialogsMessage} value={props.State.MessagePage.newMessageData}></textarea>
 					</div>
 					<div>
 						<button onClick={createNewMessage}>post</button>
