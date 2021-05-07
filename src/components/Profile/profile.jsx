@@ -10,7 +10,7 @@ const Content = (props) => {
       return (
             <div className={classes.content}>
                   <ProfileInfo name="Rahat" ava={avatar} bg={background}/>
-                  <MyPosts postData={props.postData} addPost={props.addPost}/>
+                  <MyPosts postData={props.postData} addPost={props.addPost} newPostMessage={props.newPostMessage} updatePostMessage={props.updatePostMessage}/>
             </div>
       )
 }

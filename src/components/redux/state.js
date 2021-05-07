@@ -1,4 +1,6 @@
-import {rerender} from './../../render'
+let rerender = () => {
+  console.log('hi')
+}
 let state = {
     MessagePage: {
         usersData: [
@@ -16,22 +18,54 @@ let state = {
             { message: 'React' },
             { message: 'cool' },
           ], 
+        newMessageData: ''
     },
     postPage: {
         postData: [
             { likeCount: 11, message: 'Hello, how are you?' }, 
             { likeCount: 12, message: 'Good day today' }
-          ]
+          ],
+        newPostMessage: ''
     }
 }
 
-export let newPost = (messagePost) => {
+export let subscriber = (observer) => {
+  rerender = observer;
+}
+
+//Dialogs Functions
+window.state = state;
+export const updateDialogsMessage = (text)=> {
+  state.MessagePage.newMessageData = text;
+  rerender();
+}
+
+export const addMessage = ()=> {
+  let createNewMessage = {
+    message: state.MessagePage.newMessageData
+  }
+
+  state.MessagePage.dialogsData.push(createNewMessage);
+  updateDialogsMessage('')
+  rerender();
+}
+
+//Post Functions
+export const newPost = () => {
   let createNewPost = {
     likesCount: 0,
-    message: messagePost
+    message: state.postPage.newPostMessage
   }
+
   state.postPage.postData.push(createNewPost);
-  rerender(state);
+  updatePostMessage('')
+  rerender();
 }
+
+export const updatePostMessage = (newMessage) => {
+  state.postPage.newPostMessage = newMessage;
+  rerender();
+}
+// Post Functions end
 
 export default state;
