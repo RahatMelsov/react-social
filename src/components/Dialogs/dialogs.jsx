@@ -4,7 +4,6 @@ import DialogsItem from './DialogsItem/dialogsItem';
 import Messages from './Messages/messages';
 
 const Dialogs = (props) => {
-	debugger;
 	let usersElements = props.userData.map(u => <DialogsItem name={u.name} id={u.id} />);
 	let dialogsElements = props.dialogsData.map(d => < Messages message={d.message} />);
 
@@ -15,6 +14,7 @@ const Dialogs = (props) => {
 
 	let updateNewMessage = ()=> {
 		let text = newDialogsMessage.current.value
+		console.log(text)
 		props.updateMessage(text)
 	}
 

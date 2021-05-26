@@ -10,7 +10,7 @@ const Content = (props) => {
       return (
             <div className={classes.content}>
                   <ProfileInfo name="Rahat" ava={avatar} bg={background}/>
-                  <MyPostsContainer profileState={props.State} dispatch={props.dispatch} />
+                  <MyPostsContainer />
             </div>
       )
 }

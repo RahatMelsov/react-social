@@ -4,18 +4,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import StoreContext from './storeContext';
 
-let rerender = (store)=> {
-  debugger;
-    ReactDOM.render(
-        <React.StrictMode>
-          <BrowserRouter>
-          <App state={store} 
-          dispatch={ Store.dispatch.bind(Store)} />
-          </BrowserRouter>
-        </React.StrictMode>,
-        document.getElementById('root')
-      );
+let rerender = (store) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <StoreContext.Provider value={Store}>
+          <App/>
+        </StoreContext.Provider>
+      </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
 }
 
 rerender(Store.getState())
