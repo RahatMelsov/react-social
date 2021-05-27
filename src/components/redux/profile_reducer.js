@@ -11,16 +11,21 @@ let initialState = {
 
 let profileReduser = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_POST_MESSAGE:
-            state.newPostMessage = action.newText;
-            return state;
-        case ADD_POST_MESSAGE:
+        case UPDATE_POST_MESSAGE: {
+            let stateCopy = {...state}
+            stateCopy.newPostMessage = action.newText;
+            return stateCopy;
+        }
+        case ADD_POST_MESSAGE: {
+            let stateCopy = {...state}
             let createNewPost = {
                 message: state.newPostMessage
             }
-            state.postData.push(createNewPost);
-            state.newPostMessage = ''
-            return state;
+            stateCopy.postData = [...state.postData]
+            stateCopy.postData.push(createNewPost);
+            stateCopy.newPostMessage = ''
+            return stateCopy;
+        }
         default:
             return state;
     }

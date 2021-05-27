@@ -22,16 +22,21 @@ let initialState = {
 
 let dialogsReduser = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_DIALOGS_MESSAGE:
-            state.newMessageData = action.newText;
-            return state;
-        case ADD_DIALOGS_MESSAGE:
+        case UPDATE_DIALOGS_MESSAGE: {
+            let stateCopy = {...state}
+            stateCopy.newMessageData = action.newText;
+            return stateCopy;
+        }
+        case ADD_DIALOGS_MESSAGE: {
+          let stateCopy = {...state}
+          stateCopy.dialogsData = [...stateCopy.dialogsData]
             let createNewMessage = {
                 message: state.newMessageData
             }
-            state.dialogsData.push(createNewMessage);
-            state.newMessageData = '';
-            return state;
+            stateCopy.dialogsData.push(createNewMessage);
+            stateCopy.newMessageData = '';
+            return stateCopy;
+          }
         default:
             return state;
     }
