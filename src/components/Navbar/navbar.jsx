@@ -28,6 +28,9 @@ const Navbar = (prop) => {
           <h3>Friends</h3>
             {ownFriends}
         </div>
+        <div className={classes.item}>
+          <NavLink to="/users" activeClassName={classes.activeLink}>Users</NavLink>
+        </div>
       </nav>)
 }
 

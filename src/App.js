@@ -7,6 +7,7 @@ import DialogsContainer from './components/Dialogs/dialogsContainer';
 import Music from './components/Music/music';
 import Settings from './components/Settings/settings';
 import News from './components/News/news';
+import UsersContainer from './components/Users/usersContainer'
 import { Route } from 'react-router-dom';
 
 
@@ -22,6 +23,7 @@ const App = (props) => {
         <Route path='/music' component={Music} />
         <Route path='/settings' component={Settings} />
         <Route path='/News' component={News} />
+        <Route path='/Users' component={UsersContainer} />
       </div>
     </div>
   );
